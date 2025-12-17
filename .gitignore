@@ -1,0 +1,22 @@
+# 忽略 Python 编译文件
+__pycache__/
+*.py[cod]
+
+# 忽略虚拟环境
+venv/
+env/
+.env
+
+# 忽略 IDE 配置文件 (如果你用 VSCode 或 PyCharm)
+.vscode/
+.idea/
+
+# 忽略深度学习的大型数据集和模型权重 (防止上传失败)
+*.pth
+*.h5
+*.ckpt
+dataset/
+data/
+results/
+datas/
+data_clean/

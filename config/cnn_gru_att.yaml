@@ -1,0 +1,46 @@
+# config/cnn_gru_att.yaml
+seed: 42
+device: cuda
+
+data:
+  # 你的 dataset_loader 读取的键（必须有）：
+  train_path: "datas/splits/train_dataset.csv"
+  val_path: "datas/splits/val_dataset.csv"
+  test_path: "datas/splits/test_dataset.csv"
+  input_shape: [8, 8]      # => H,W
+
+  # 兼容其余脚本的备用键（可有可无）：
+  train_csv: data/train.csv
+  val_csv:   data/val.csv
+  test_csv:  data/test.csv
+  image_size: [8, 8]
+  label_col: label
+  # feature_cols: [feat1, feat2, ..., feat64]  # 若需要显式指定列名时再打开
+
+model:
+  num_classes: 1           # 单通道输出 + BCEWithLogitsLoss
+  cnn_channels: [32, 64]
+  use_cbam: true
+  cbam_reduction: 8
+  gru_hidden: 128
+  gru_layers: 1
+  bidirectional: false
+  attn_type: add           # add | dot
+  temperature: 1.0
+  dropout: 0.5
+  use_batchnorm: true
+  sequence_order: row
+
+training:
+  run_root: results/tuning_gru_attn
+  batch_size: 512
+  epochs: 20
+  learning_rate: 5.0e-4
+  weight_decay: 1.0e-4
+  pos_weight: 1.0
+  amp: true
+  early_stopping_patience: 8
+  scheduler: cosine
+
+inference:
+  threshold: 0.50
