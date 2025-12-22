@@ -20,3 +20,18 @@ data/
 results/
 datas/
 data_clean/
+
+# 忽略具体的流量包和大数据文件
+*.pcap
+*.pcapng
+*.csv
+*.txt
+*.log
+
+# --- 模型权重文件 (通常很大) ---
+*.pth
+*.pt
+*.h5
+*.ckpt
+checkpoints/
+runs/
