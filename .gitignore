@@ -19,7 +19,6 @@ dataset/
 data/
 results/
 datas/
-data_clean/
 
 # 忽略具体的流量包和大数据文件
 *.pcap
