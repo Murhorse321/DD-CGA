@@ -1,22 +1,25 @@
 training:
-  batch_size: 64
+  batch_size: 512
   learning_rate: 0.001
   weight_decay: 0.0
-  epochs: 50
+  epochs: 100
   dropout: 0.5
-  early_stopping_patience: 5
+  early_stopping_patience: 10
   label_smoothing: 0.0
-  log_dir: results/logs/cnn_baseline
-  ckpt_dir: results/checkpoints
-  best_on: val_acc
+  log_dir: results/cnn_baseline/logs
+  ckpt_dir: results/cnn_baseline/checkpoints
+  best_on: val_f1
 data:
-  train_path: datas/splits/train_dataset.csv
-  val_path: datas/splits/val_dataset.csv
-  test_path: datas/splits/test_dataset.csv
+  train_path: CleanData/data/step6_normalized/train.csv
+  val_path: CleanData/data/step6_normalized/val.csv
+  test_path: CleanData/data/step6_normalized/val.csv
+  label_col: label_int
+  ignore_cols: [ label ]
+
   input_shape:
   - 8
   - 8
   expect_normalized: true
 inference:
-  threshold: 0.437
+  threshold: 0.50
   min_precision: 0.99

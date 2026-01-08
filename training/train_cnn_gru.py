@@ -138,7 +138,7 @@ def main(args):
     timestamp  = time.strftime("%Y%m%d-%H%M%S")
     log_dir    = f"{base_log_dir}_{timestamp}"
     ckpt_dir   = os.path.join(base_ckpt_dir, timestamp)
-    figures_dir = os.path.join("results/figures", timestamp)
+    figures_dir = os.path.join("results/cnn_gru/figures", timestamp)
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(ckpt_dir, exist_ok=True)
     os.makedirs(figures_dir, exist_ok=True)

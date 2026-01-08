@@ -14,20 +14,21 @@ model:
 data:
   input_shape: [8, 8]
   expect_normalized: true
-  train_path: "datas/splits/train_dataset.csv"
-  val_path: "datas/splits/val_dataset.csv"
-  test_path: "datas/splits/test_dataset.csv"
+  train_path: CleanData/data/step6_normalized/train.csv
+  val_path: CleanData/data/step6_normalized/val.csv
+  test_path: CleanData/data/step6_normalized/val.csv
+  label_col: label_int
+  ignore_cols: [ label ]
 
 training:
-  batch_size: 512
+  batch_size: 256
   learning_rate: 1e-3
   weight_decay: 0.0
-  epochs: 20
+  epochs: 100
   dropout: 0.5
-  early_stopping_patience: 5
+  early_stopping_patience: 10
   best_on: val_f1_macro
-  log_dir: results/logs/cnn_gru
-  ckpt_dir: results/checkpoints
+  log_dir: results/cnn_gru/logs
+  ckpt_dir: results/cnn_gru/checkpoints
 
-inference:
-  threshold: 0.45
+

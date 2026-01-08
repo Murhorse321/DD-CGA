@@ -4,17 +4,14 @@ device: cuda
 
 data:
   # 你的 dataset_loader 读取的键（必须有）：
-  train_path: "datas/splits/train_dataset.csv"
-  val_path: "datas/splits/val_dataset.csv"
-  test_path: "datas/splits/test_dataset.csv"
+  train_path: CleanData/data/step6_normalized/train.csv
+  val_path: CleanData/data/step6_normalized/val.csv
+  test_path: CleanData/data/step6_normalized/test.csv
+  label_col: label_int
+  ignore_cols: [ label ]
   input_shape: [8, 8]      # => H,W
 
-  # 兼容其余脚本的备用键（可有可无）：
-  train_csv: data/train.csv
-  val_csv:   data/val.csv
-  test_csv:  data/test.csv
-  image_size: [8, 8]
-  label_col: label
+
   # feature_cols: [feat1, feat2, ..., feat64]  # 若需要显式指定列名时再打开
 
 model:
@@ -34,13 +31,15 @@ model:
 training:
   run_root: results/tuning_gru_attn
   batch_size: 512
-  epochs: 20
-  learning_rate: 5.0e-4
-  weight_decay: 1.0e-4
+  epochs: 100
+  learning_rate: 1e-3
+  weight_decay: 0.0
   pos_weight: 1.0
   amp: true
-  early_stopping_patience: 8
+  early_stopping_patience: 10
   scheduler: cosine
+  log_dir: results/cnn_gru_attn/logs
+  ckpt_dir: results/cnn_gru_attn/checkpoints
 
 inference:
   threshold: 0.50
