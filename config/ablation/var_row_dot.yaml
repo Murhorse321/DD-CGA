@@ -1,0 +1,28 @@
+# config/ablation/var_row_dot.yaml
+# ... (其他与 base 相同，仅修改以下参数)
+model:
+  params:
+
+    cnn_channels: [ 32, 64 ]
+    gru_hidden: 128
+    gru_layers: 1
+    use_cbam: true
+    dropout: 0.5
+    bidirectional: true
+    sequence_order: row
+    attn_type: dot      # <--- 变化点
+# ... (其余 data 和 training 部分请复制上面的)
+data:
+  input_shape: [8, 8]
+  train_path: CleanData/data/step6_normalized/train.csv
+  val_path: CleanData/data/step6_normalized/val.csv
+  test_path: CleanData/data/step6_normalized/test.csv
+  label_col: label_int
+  ignore_cols: [label]
+
+training:
+  run_root: results/ablation_study/var_row_dot  # 结果单独存放
+  batch_size: 256
+  epochs: 100
+  learning_rate: 1e-3
+  early_stopping_patience: 10

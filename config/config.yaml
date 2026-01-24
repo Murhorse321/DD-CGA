@@ -1,12 +1,12 @@
 training:
-  batch_size: 512
+  batch_size: 256
   learning_rate: 0.001
   weight_decay: 0.0
   epochs: 100
   dropout: 0.5
   early_stopping_patience: 10
   label_smoothing: 0.0
-  log_dir: results/cnn_baseline/logs
+  log_dir: results/cnn_baseline/log/logs
   ckpt_dir: results/cnn_baseline/checkpoints
   best_on: val_f1
 data:

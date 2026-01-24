@@ -1,15 +1,15 @@
 model:
-  name: cnn_gru
+  name: cnn_gru_uni
   params:
     cnn_channels: [32, 64]
     gru_hidden: 128
     gru_layers: 1
-    bidirectional: true
+
     dropout: 0.5
     use_batchnorm: true
     pooling: last
     sequence_order: row
-
+    bidirectional: false # <--- 改为单向
 
 data:
   input_shape: [8, 8]
@@ -28,7 +28,7 @@ training:
   dropout: 0.5
   early_stopping_patience: 10
   best_on: val_f1_macro
-  log_dir: results/cnn_gru/log/logs
-  ckpt_dir: results/cnn_gru/checkpoints
+  log_dir: results/cnn_uni_gru/log/logs
+  ckpt_dir: results/cnn_uni_gru/checkpoints
 
 

@@ -19,13 +19,16 @@ dataset/
 data/
 results/
 datas/
-
-# 忽略具体的流量包和大数据文件
+paper_figures/
+make_chart/
+private/
+# 忽略具体的流量包和大数据文件以及图片
 *.pcap
 *.pcapng
 *.csv
 *.txt
 *.log
+*.png
 
 # --- 模型权重文件 (通常很大) ---
 *.pth
